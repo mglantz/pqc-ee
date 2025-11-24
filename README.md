@@ -1,6 +1,6 @@
 # Post-Quantum Cryptography for an Ansible execution environment
 This is an example of an RHEL 10 Post-Quantum Cryptography (PQC) Execution Environment.
-For demo purposes, this EE only allows SSH using the PQC kex algorithm mlkem768x25519-sha256.
+This EE only allows SSH using the PQC kex algorithm mlkem768x25519-sha256, read the build instructions for how to change that behavior.
 
 ```
 ├── context
