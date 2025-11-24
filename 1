@@ -1,10 +1,9 @@
 # Post-Quantum Cryptography for an Ansible execution environment
 This is an example of an RHEL 10 Post-Quantum Cryptography (PQC) Execution Environment.
-For demo purposes, this EE only allows SSH using the PQC kex algorithm mlkem768x25519-sha256.
 
 ```
 ├── context
-│   └── openssh.config # Only allowing mlkem768x25519-sha256. Remove if you don't like that.
+│   └── openssh.config # RHEL 10, openssh client config
 ├── execution-environment.yml # Execution environment
 ├── LICENSE
 └── README.md
@@ -12,7 +11,7 @@ For demo purposes, this EE only allows SSH using the PQC kex algorithm mlkem768x
 
 # How to build your own execution environment
 1. I'm using the Red Hat Universal Base Image for RHEL 10.1 to build the execution environment, that means you also need access to that.
-[You get access for free](https://catalog.redhat.com/en/software/base-images), but need access to this image: registry.access.redhat.com/ubi10:10.1
+You can get access for free, [following these instructions](https://catalog.redhat.com/en/software/base-images).
 
 2. Get ansible-builder. I used the upstream version of ansible-builder for Fedora 43, which is my own build rig.
 ```
@@ -24,9 +23,4 @@ $ pip install ansible-builder
 $ git clone https://github.com/mglantz/pqc-ee
 ```
 
-4. Build the image
-```
-$ ansible-builder build
-```
-
-5. Push the image to some registry you like or Private Automation Hub, etc, and use it.
+4. 
