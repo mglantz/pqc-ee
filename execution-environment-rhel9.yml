@@ -1,4 +1,4 @@
-# DOES NOT WORK
+# DOES NOT WORK UNTIL RHEL 9.8...
 version: 3
 images:
   base_image:

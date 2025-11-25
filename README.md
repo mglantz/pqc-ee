@@ -12,7 +12,7 @@ This EE only allows SSH using the PQC kex algorithm mlkem768x25519-sha256, read 
 
 # How to build your own PQC execution environment
 1. I'm using the Red Hat Universal Base Image for RHEL 10.1 to build the execution environment, that means you also need access to that.
-[You get access for free](https://catalog.redhat.com/en/software/base-images), but need access to this image: registry.access.redhat.com/ubi10:10.1
+[You get access for free](https://catalog.redhat.com/en/software/base-images), but need access to this image: registry.access.redhat.com/ubi10:10.1. This does atm not work in RHEL 9-latest.
 
 2. Get ansible-builder. I used the upstream version of ansible-builder for Fedora 43, which is my own build rig.
 ```
