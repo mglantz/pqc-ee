@@ -1,4 +1,4 @@
-# DOES NOT WORK UNTIL RHEL 9.8...
+# DOES NOT WORK ATM.
 version: 3
 images:
   base_image:
