@@ -1,10 +1,10 @@
-ARG EE_BASE_IMAGE="registry.access.redhat.com/ubi10:10.1"
+ARG EE_BASE_IMAGE="registry.redhat.io/ansible-automation-platform-26/ee-supported-rhel9:latest"
 ARG PYCMD="/usr/bin/python3"
 ARG PKGMGR_PRESERVE_CACHE=""
 ARG ANSIBLE_GALAXY_CLI_COLLECTION_OPTS=""
 ARG ANSIBLE_GALAXY_CLI_ROLE_OPTS=""
 ARG ANSIBLE_INSTALL_REFS="ansible-core ansible-runner"
-ARG PKGMGR="/usr/bin/dnf"
+ARG PKGMGR="/usr/bin/microdnf"
 
 # Base build stage
 FROM $EE_BASE_IMAGE AS base
@@ -20,7 +20,6 @@ ARG PKGMGR
 
 COPY _build/scripts/ /output/scripts/
 COPY _build/scripts/entrypoint /opt/builder/bin/entrypoint
-COPY openssh.config /etc/crypto-policies/back-ends/
 RUN /output/scripts/pip_install $PYCMD
 RUN $PYCMD -m pip install --no-cache-dir $ANSIBLE_INSTALL_REFS
 
@@ -60,6 +59,7 @@ RUN chmod ug+rw /etc/passwd
 RUN mkdir -p /runner && chgrp 0 /runner && chmod -R ug+rwx /runner
 WORKDIR /runner
 RUN $PYCMD -m pip install --no-cache-dir 'dumb-init==1.2.5'
+RUN update-crypto-policies --set DEFAULT:PQ
 RUN rm -rf /output
 LABEL ansible-execution-environment=true
 USER 1000

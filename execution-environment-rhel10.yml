@@ -1,0 +1,22 @@
+version: 3
+images:
+  base_image:
+    name: registry.access.redhat.com/ubi10:10.1
+dependencies:
+  ansible_core:
+    package_pip: ansible-core
+  ansible_runner:
+    package_pip: ansible-runner
+  system:
+    - python3
+    - python3-pip
+    - openssh-clients
+  python:
+    - ansible
+    - ansible-runner
+additional_build_steps:
+  prepend_base:
+    - COPY openssh.config /etc/crypto-policies/back-ends/
+options:
+  tags:
+    - pqc-ee:1.2
